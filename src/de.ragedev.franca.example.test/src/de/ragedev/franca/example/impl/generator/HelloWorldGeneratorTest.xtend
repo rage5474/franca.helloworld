@@ -6,8 +6,12 @@ import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.franca.core.dsl.FrancaIDLInjectorProvider
 import org.franca.core.dsl.FrancaPersistenceManager
+import org.franca.core.franca.FModel
+import org.franca.core.utils.FileHelper
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.nio.file.Files
+import java.nio.file.Paths
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(FrancaIDLInjectorProvider))
@@ -18,22 +22,19 @@ class HelloWorldGeneratorTest {
 
 	@Test
 	def void runGenerator() {
-		val generator = new HelloWorldGenerator
 
 		val root = URI.createURI("classpath:/")
 		val loc = URI.createFileURI("de/ragedev/franca/example/HelloWorld.fidl")
 
-		val fmodel = loader.loadModel(loc, root)		
+		val FModel fmodel = loader.loadModel(loc, root)
 
-		println("Franca IDL: package '" + fmodel.getName() + "'").toString
-//		
-//		// generate code from first interface in Franca model
-//		assertTrue(fmodel.getInterfaces().size()>0);
-//		FInterface api = fmodel.getInterfaces().get(0);
-//		ExampleHppGenerator generator = new ExampleHppGenerator();
-//		String code = generator.generateInterface(api).toString();
-//		System.out.println("Generated code:\n" + code);
-//		
-//FileHelper.save("src-gen", getBasename(fmodel) + ".hpp", code);
+		println("Franca IDL: package '" + fmodel.interfaces.get(0).name + "'").toString
+
+		val api = fmodel.getInterfaces().get(0);
+		val generator = new HelloWorldGenerator(fmodel.name)
+		val code = generator.generateInterface(api).toString();
+		
+		val folder = fmodel.name.replaceAll("\\.","/")
+		FileHelper.save("src-gen/" + folder + "/", fmodel.interfaces.get(0).name + ".java", code);
 	}
 }
