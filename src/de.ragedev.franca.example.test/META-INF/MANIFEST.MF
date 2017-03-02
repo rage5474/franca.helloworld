@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Test
+Bundle-SymbolicName: de.ragedev.franca.example.test
+Bundle-Version: 1.0.0.qualifier
+Fragment-Host: de.ragedev.franca.example;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.junit;bundle-version="4.12.0",
+ org.eclipse.xtext,
+ org.eclipse.xtext.junit4;bundle-version="2.10.0",
+ org.franca.core;bundle-version="0.11.0",
+ org.franca.core.dsl;bundle-version="0.11.0",
+ org.franca.core.dsl.tests.base;bundle-version="0.11.0",
+ org.hamcrest.library;bundle-version="1.3.0",
+ org.apache.log4j;bundle-version="1.2.15",
+ org.eclipse.core.runtime;bundle-version="3.12.0"

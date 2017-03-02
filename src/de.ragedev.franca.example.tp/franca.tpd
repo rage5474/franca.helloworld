@@ -1,0 +1,22 @@
+target "Franca example Target Platform"
+
+location "http://download.eclipse.org/releases/neon" {
+	org.eclipse.xtext.sdk.feature.group
+	org.eclipse.xtext.junit4
+	org.eclipse.xtend.sdk.feature.group
+	org.eclipse.emf.sdk.feature.group
+	org.eclipse.core.runtime.feature.feature.group
+	org.junit
+	com.google.guava
+	com.google.inject
+	org.hamcrest.core
+	org.hamcrest.library
+	javax.inject
+}
+
+location "http://franca.github.io/franca/update_site/releases" {
+	org.franca.core.sdk.feature.group
+	org.franca.ui.sdk.feature.group
+	org.franca.ui.addons.sdk.feature.group
+	
+}

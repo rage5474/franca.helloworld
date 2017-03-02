@@ -1,0 +1,14 @@
+package de.ragedev.franca.example
+
+interface HelloWorld {
+	version {
+		major 0
+		minor 1
+	}
+
+	method helloWorld {
+		in {
+			String name
+		}
+	}
+}
